@@ -1,0 +1,7 @@
+# tasks file for docker-compose
+---
+- include: install.yml
+  tags:
+    - configuration
+    - docker-compose
+    - docker-compose-install
