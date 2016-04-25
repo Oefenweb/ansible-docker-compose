@@ -17,6 +17,11 @@ None
 
 None
 
+## Recommended
+
+* `ansible-docker` ([see](https://github.com/Oefenweb/ansible-docker))
+* `ansible-docker-machine` ([see](https://github.com/Oefenweb/ansible-docker-machine))
+
 #### Example
 
 ```yaml
