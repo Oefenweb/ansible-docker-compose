@@ -10,7 +10,7 @@ None
 
 #### Variables
 
-* `docker_compose_version` [default: `1.14.0`]: Version to install
+* `docker_compose_version` [default: `1.15.0`]: Version to install
 * `docker_compose_install_prefix` [default: `/usr/local/bin`]: Install prefix
 
 ## Dependencies
