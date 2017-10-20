@@ -39,3 +39,12 @@
   tags:
     - docker-compose-install-install
     - docker-compose-install-install-symlink
+
+- name: verify
+  command: >
+    {{ docker_compose_install_prefix }}/docker-compose --version
+  register: _verify_version
+  failed_when: "docker_compose_version not in _verify_version.stdout"
+  changed_when: false
+  tags:
+    - docker-compose-install-verify
