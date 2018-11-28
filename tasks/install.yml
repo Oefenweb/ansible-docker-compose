@@ -2,7 +2,7 @@
 ---
 - name: get download name
   shell: echo docker-compose-$(uname -s)-$(uname -m)
-  register: get_download_name
+  register: _get_download_name
   changed_when: false
   tags:
     - docker-compose-install-download
@@ -21,8 +21,8 @@
 
 - name: download
   get_url:
-    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/{{ get_download_name.stdout }}"
-    dest: "{{ docker_compose_downloads_path }}/{{ get_download_name.stdout }}-{{ docker_compose_version }}"
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/{{ _get_download_name.stdout }}"
+    dest: "{{ docker_compose_downloads_path }}/{{ _get_download_name.stdout }}-{{ docker_compose_version }}"
     owner: root
     group: root
     mode: 0755
@@ -32,7 +32,7 @@
 
 - name: install
   file:
-    src: "{{ docker_compose_downloads_path }}/{{ get_download_name.stdout }}-{{ docker_compose_version }}"
+    src: "{{ docker_compose_downloads_path }}/{{ _get_download_name.stdout }}-{{ docker_compose_version }}"
     dest: "{{ docker_compose_install_prefix }}/docker-compose"
     state: link
     force: true
