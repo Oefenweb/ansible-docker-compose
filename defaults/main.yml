@@ -1,4 +1,4 @@
 # defaults file for docker-compose
 ---
-docker_compose_version: 1.26.0
+docker_compose_version: 1.26.2
 docker_compose_install_prefix: /usr/local/bin
