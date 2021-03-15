@@ -1,4 +1,4 @@
-# tasks file for docker-compose
+# tasks file
 ---
 - include: install.yml
   tags:
