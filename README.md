@@ -1,6 +1,6 @@
 ## docker-compose
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-docker-compose.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-docker-compose)
+[![CI](https://github.com/Oefenweb/ansible-docker-compose/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-docker-compose/actions?query=workflow%3ACI)
 [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-docker--compose-blue.svg)](https://galaxy.ansible.com/Oefenweb/docker-compose/)
 
 Set up (the latest or a specific version of) [Docker Compose](https://docs.docker.com/compose) in Debian-like systems.
