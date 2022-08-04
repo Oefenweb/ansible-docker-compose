@@ -1,7 +1,7 @@
 # tasks file
 ---
 - name: get download name
-  shell: >
+  ansible.builtin.shell: >
     echo docker-compose-$(uname -s)-$(uname -m)
   register: _get_download_name
   changed_when: false
@@ -10,7 +10,7 @@
     - docker-compose-install-download-name
 
 - name: create (download) directory
-  file:
+  ansible.builtin.file:
     path: "{{ docker_compose_downloads_path }}"
     state: directory
     owner: root
@@ -21,7 +21,7 @@
     - docker-compose-install-download-directory
 
 - name: download
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/{{ _get_download_name.stdout }}"
     dest: "{{ docker_compose_downloads_path }}/{{ _get_download_name.stdout }}-{{ docker_compose_version }}"
     owner: root
@@ -32,7 +32,7 @@
     - docker-compose-install-download-get
 
 - name: install
-  file:
+  ansible.builtin.file:
     src: "{{ docker_compose_downloads_path }}/{{ _get_download_name.stdout }}-{{ docker_compose_version }}"
     dest: "{{ docker_compose_install_prefix }}/docker-compose"
     state: link
@@ -42,7 +42,7 @@
     - docker-compose-install-install-symlink
 
 - name: verify
-  command: >
+  ansible.builtin.command: >
     {{ docker_compose_install_prefix }}/docker-compose --version
   register: _verify_version
   failed_when: "docker_compose_version not in _verify_version.stdout"
