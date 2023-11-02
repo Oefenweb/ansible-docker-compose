@@ -29,7 +29,7 @@ None
 ---
 - hosts: all
   roles:
-    - docker-compose
+    - oefenweb.docker-compose
 ```
 
 #### License
