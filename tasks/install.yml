@@ -2,20 +2,23 @@
 ---
 - name: get download name
   ansible.builtin.shell: >
-    echo docker-compose-$(uname -s)-$(uname -m)
+    echo docker-compose-$(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]'
   register: _get_download_name
   changed_when: false
   tags:
     - docker-compose-install-download
     - docker-compose-install-download-name
 
-- name: create (download) directory
+- name: create (necessary) directories
   ansible.builtin.file:
-    path: "{{ docker_compose_downloads_path }}"
+    path: "{{ item }}"
     state: directory
     owner: root
     group: root
     mode: 0755
+  with_items:
+    - "{{ docker_compose_downloads_path }}"
+    - "{{ docker_compose_install_prefix }}"
   tags:
     - docker-compose-install-download
     - docker-compose-install-download-directory
@@ -43,7 +46,7 @@
 
 - name: verify
   ansible.builtin.command: >
-    {{ docker_compose_install_prefix }}/docker-compose --version
+    docker compose version
   register: _verify_version
   failed_when: "docker_compose_version not in _verify_version.stdout"
   changed_when: false
