@@ -1,6 +1,6 @@
 # tasks file
 ---
-- name: get download name
+- name: get download name  # noqa risky-shell-pipe
   ansible.builtin.shell: >
     echo docker-compose-$(uname -s)-$(uname -m) | tr '[:upper:]' '[:lower:]'
   register: _get_download_name
