@@ -15,7 +15,7 @@
     state: directory
     owner: root
     group: root
-    mode: 0755
+    mode: '0755'
   with_items:
     - "{{ docker_compose_downloads_path }}"
     - "{{ docker_compose_install_prefix }}"
@@ -29,7 +29,7 @@
     dest: "{{ docker_compose_downloads_path }}/{{ _get_download_name.stdout }}-{{ docker_compose_version }}"
     owner: root
     group: root
-    mode: 0755
+    mode: '0755'
   tags:
     - docker-compose-install-download
     - docker-compose-install-download-get
